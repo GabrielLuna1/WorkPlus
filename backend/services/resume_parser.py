@@ -178,7 +178,7 @@ URL_RE = re.compile(
     r"(?:https?://)?(?:[a-zA-Z0-9-]+\.)+(?:com|org|net|io|dev|app|gov|edu|br|com\.br)(?:\/[^\s()]*)?(?=\s|$|\)|\.)"
 )
 DATE_RANGE_RE = re.compile(
-    r"((?:jan|fev|mar|abr|mai|jun|jul|ago|set|out|nov|dez|january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s*\d{4})\s*(?:[-â€“â€”a]+)\s*((?:jan|fev|mar|abr|mai|jun|jul|ago|set|out|nov|dez|january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s*\d{4}|atual|presente?|o momento|currently)",
+    r"((?:jan|fev|mar|abr|mai|jun|jul|ago|set|out|nov|dez|january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s*\d{4})\s*(?:[-–—a]+)\s*((?:jan|fev|mar|abr|mai|jun|jul|ago|set|out|nov|dez|january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s*\d{4}|atual|presente?|o momento|currently)",
     re.IGNORECASE,
 )
 
@@ -211,11 +211,11 @@ SECTION_DEFINITIONS = [
     (
         "experience",
         [
-            "experiÃªncia profissional",
-            "experiÃªncia",
-            "experiÃªncias profissionais",
-            "histÃ³rico profissional",
-            "trajetÃ³ria profissional",
+            "experiência profissional",
+            "experiência",
+            "experiências profissionais",
+            "histórico profissional",
+            "trajetória profissional",
             "carreira",
         ],
         [
@@ -245,7 +245,7 @@ SECTION_DEFINITIONS = [
             "cargo",
             "position",
             "role",
-            "responsÃ¡vel",
+            "responsável",
             "responsible",
             "reportava",
         ],
@@ -254,9 +254,9 @@ SECTION_DEFINITIONS = [
     (
         "education",
         [
-            "formaÃ§Ã£o acadÃªmica",
-            "educaÃ§Ã£o",
-            "formaÃ§Ã£o",
+            "formação acadêmica",
+            "educação",
+            "formação",
             "escolaridade",
         ],
         [
@@ -269,9 +269,9 @@ SECTION_DEFINITIONS = [
             "academic history",
         ],
         [
-            "formaciÃ³n acadÃ©mica",
-            "educaciÃ³n",
-            "formaciÃ³n",
+            "formación académica",
+            "educación",
+            "formación",
         ],
         [
             "universidade",
@@ -285,17 +285,17 @@ SECTION_DEFINITIONS = [
             "doutorado",
             "phd",
             "licenciatura",
-            "graduaÃ§Ã£o",
+            "graduação",
             "graduate",
         ],
-        ["acad.", "formaÃ§Ã£o", "educ.", "schooling"],
+        ["acad.", "formação", "educ.", "schooling"],
     ),
     (
         "skills",
         [
             "habilidades",
-            "competÃªncias tÃ©cnicas",
-            "competÃªncias",
+            "competências técnicas",
+            "competências",
             "conhecimentos",
             "principais habilidades",
             "tecnologias",
@@ -318,10 +318,10 @@ SECTION_DEFINITIONS = [
         ],
         [
             "habilidades",
-            "competencias tÃ©cnicas",
+            "competencias técnicas",
             "competencias",
             "conocimientos",
-            "tecnologÃ­as",
+            "tecnologías",
             "herramientas",
         ],
         [
@@ -342,7 +342,7 @@ SECTION_DEFINITIONS = [
         [
             "projetos",
             "projetos de engenharia",
-            "portfÃ³lio",
+            "portfólio",
             "projetos realizados",
         ],
         [
@@ -362,10 +362,10 @@ SECTION_DEFINITIONS = [
         ],
         [
             "github",
-            "repositÃ³rio",
+            "repositório",
             "repository",
             "deploy",
-            "aplicaÃ§Ã£o",
+            "aplicação",
             "application",
             "app",
         ],
@@ -374,10 +374,10 @@ SECTION_DEFINITIONS = [
     (
         "certifications",
         [
-            "certificaÃ§Ãµes",
+            "certificações",
             "cursos",
             "certificados",
-            "certificaÃ§Ãµes & aperfeiÃ§oamento",
+            "certificações & aperfeiçoamento",
         ],
         [
             "certifications",
@@ -396,7 +396,7 @@ SECTION_DEFINITIONS = [
         ],
         [
             "certified",
-            "certificaÃ§Ã£o",
+            "certificação",
             "bootcamp",
             "udemy",
             "coursera",
@@ -410,7 +410,7 @@ SECTION_DEFINITIONS = [
         "languages",
         [
             "idiomas",
-            "lÃ­nguas",
+            "línguas",
         ],
         [
             "languages",
@@ -426,15 +426,15 @@ SECTION_DEFINITIONS = [
             "fluent",
             "nativo",
             "native",
-            "inglÃªs",
+            "inglês",
             "english",
-            "portuguÃªs",
+            "português",
             "portuguese",
             "espanhol",
             "spanish",
-            "intermediÃ¡rio",
+            "intermediário",
             "intermediate",
-            "bÃ¡sico",
+            "básico",
             "basic",
         ],
         ["lang.", "idiomas"],
@@ -461,7 +461,7 @@ SECTION_DEFINITIONS = [
         [
             "resumen profesional",
             "perfil profesional",
-            "sobre mÃ­",
+            "sobre mí",
         ],
         [],
         ["summary", "profile", "about", "resumo", "objetivo"],
@@ -556,7 +556,7 @@ def _structural_hints(section_type: str, text: str) -> float:
                 "master",
                 "phd",
                 "doutorado",
-                "tecnÃ³logo",
+                "tecnólogo",
             ]
         ):
             score += 0.3
@@ -571,7 +571,7 @@ def _structural_hints(section_type: str, text: str) -> float:
         score = min(known_hits * 0.15, 0.8)
     elif section_type == "projects":
         if any(
-            kw in text_lower for kw in ["github", "git", "repositÃ³rio", "repository"]
+            kw in text_lower for kw in ["github", "git", "repositório", "repository"]
         ):
             score += 0.4
         if URL_RE.search(text):
@@ -591,7 +591,7 @@ def _structural_hints(section_type: str, text: str) -> float:
     elif section_type == "languages":
         if any(
             kw in text_lower
-            for kw in ["fluente", "fluent", "nativo", "native", "inglÃªs", "english"]
+            for kw in ["fluente", "fluent", "nativo", "native", "inglês", "english"]
         ):
             score += 0.5
     elif section_type == "summary":
@@ -760,7 +760,7 @@ def extract_text(file_path: str) -> str:
         return extract_text_from_pdf(file_path)
     elif ext in (".docx", ".doc"):
         return extract_text_from_docx(file_path)
-    raise ValueError(f"Formato nÃ£o suportado: {ext}")
+    raise ValueError(f"Formato não suportado: {ext}")
 
 
 def normalize_skills(raw_skills: list[str]) -> list[str]:
@@ -775,7 +775,7 @@ def normalize_skills(raw_skills: list[str]) -> list[str]:
 def _extract_list(text: str) -> list[str]:
     items = []
     for line in text.split("\n"):
-        line = line.strip().lstrip("â€¢-*â—â—¦â€£âƒâ€“â€”").strip()
+        line = line.strip().lstrip("•-*●◦‣⁃–—").strip()
         if line and len(line) > 2:
             items.append(line)
     return items
@@ -853,7 +853,7 @@ def _extract_header_contextual(raw_text: str, file_path: str) -> dict:
     }
     http_links: list[str] = [u for u in uri_set if u.startswith("http")]
 
-    # Email â€” global regex + annotation priority
+    # Email — global regex + annotation priority
     email: Optional[str] = None
     if mailto_set:
         email = next(iter(mailto_set))
@@ -861,11 +861,11 @@ def _extract_header_contextual(raw_text: str, file_path: str) -> dict:
         email_match = EMAIL_RE.search(raw_text)
         email = email_match.group(0) if email_match else None
 
-    # Phone â€” global regex
+    # Phone — global regex
     phone_match = PHONE_RE.search(raw_text)
     telefone = phone_match.group(0).strip() if phone_match else None
 
-    # LinkedIn â€” annotation priority
+    # LinkedIn — annotation priority
     linkedin: Optional[str] = None
     for url in http_links:
         if "linkedin.com" in url.lower():
@@ -877,7 +877,7 @@ def _extract_header_contextual(raw_text: str, file_path: str) -> dict:
         if linkedin and not linkedin.startswith("http"):
             linkedin = f"https://{linkedin}"
 
-    # GitHub â€” annotation priority
+    # GitHub — annotation priority
     github: Optional[str] = None
     for url in http_links:
         if "github.com" in url.lower() and "/" in url.replace("github.com", "").strip(
@@ -891,7 +891,7 @@ def _extract_header_contextual(raw_text: str, file_path: str) -> dict:
         if github and not github.startswith("http"):
             github = f"https://{github}"
 
-    # Portfolio â€” annotation priority (restante que nÃ£o Ã© linkedin/github/email)
+    # Portfolio — annotation priority (restante que não é linkedin/github/email)
     portfolio: Optional[str] = None
     for url in http_links:
         lower = url.lower()
@@ -922,7 +922,7 @@ def _extract_header_contextual(raw_text: str, file_path: str) -> dict:
                     social[provider] = url
                 break
 
-    # Name â€” first contextual block (not email/phone/URL, 2-5 words, capitalized)
+    # Name — first contextual block (not email/phone/URL, 2-5 words, capitalized)
     nome = ""
     for line in lines[:20]:
         stripped = line.strip()
@@ -945,19 +945,19 @@ def _extract_header_contextual(raw_text: str, file_path: str) -> dict:
         if re.search(r"\d{4}", stripped):
             continue
         if stripped.lower().startswith(
-            ("curriculo", "currÃ­culo", "cv", "resume", "linkedin", "github")
+            ("curriculo", "currículo", "cv", "resume", "linkedin", "github")
         ):
             continue
         nome = stripped
         break
     if not nome:
-        nome = "CurrÃ­culo sem nome"
+        nome = "Currículo sem nome"
 
-    # City â€” line with geographic indicators, stripping non-city tokens
+    # City — line with geographic indicators, stripping non-city tokens
     cidade = ""
     for line in lines[:20]:
         # Skip lines that look like date ranges (any year-year pattern)
-        if re.search(r"\d{4}\s*[-â€“â€”]\s*\d{4}", line) or DATE_RANGE_RE.search(line):
+        if re.search(r"\d{4}\s*[-–—]\s*\d{4}", line) or DATE_RANGE_RE.search(line):
             continue
         line_lower = line.strip().lower()
         if any(
@@ -972,14 +972,14 @@ def _extract_header_contextual(raw_text: str, file_path: str) -> dict:
                 ", rs",
                 ", pr",
                 "cidade:",
-                "localizaÃ§Ã£o:",
+                "localização:",
                 "localizacao:",
                 "city:",
                 "location:",
             ]
         ):
             city_match = re.search(
-                r"([A-ZÃ€-Ãš][a-zÃ -Ãº]+(?:\s[A-ZÃ€-Ãš][a-zÃ -Ãº]+)?)\s*[-â€“â€”,]\s*([A-Z]{2})",
+                r"([A-ZÀ-Ú][a-zà-ú]+(?:\s[A-ZÀ-Ú][a-zà-ú]+)?)\s*[-–—,]\s*([A-Z]{2})",
                 line.strip(),
             )
             if city_match:
@@ -988,13 +988,13 @@ def _extract_header_contextual(raw_text: str, file_path: str) -> dict:
                 cleaned = line.strip()
                 for prefix in [
                     "Cidade:",
-                    "LocalizaÃ§Ã£o:",
+                    "Localização:",
                     "Localizacao:",
                     "City:",
                     "Location:",
                 ]:
                     cleaned = cleaned.replace(prefix, "").strip()
-                email_suffix = re.search(r"\s*[|â€¢]\s*" + EMAIL_RE.pattern, cleaned)
+                email_suffix = re.search(r"\s*[|•]\s*" + EMAIL_RE.pattern, cleaned)
                 if email_suffix:
                     cleaned = cleaned[: email_suffix.start()].strip()
                 phone_s = PHONE_RE.search(cleaned)
@@ -1003,7 +1003,7 @@ def _extract_header_contextual(raw_text: str, file_path: str) -> dict:
                 url_s = re.search(r"\s*(?:https?://)?\S+\.\w{2,}(?:/\S*)?", cleaned)
                 if url_s:
                     cleaned = cleaned[: url_s.start()].strip()
-                cleaned = cleaned.rstrip("|â€¢, ").strip()
+                cleaned = cleaned.rstrip("|•, ").strip()
                 if cleaned and len(cleaned) < 60:
                     cidade = cleaned
             break
@@ -1029,7 +1029,7 @@ def _parse_experiences(section_text: str) -> list[ExperienciaProfissional]:
         if not block:
             continue
         block_lines = block.split("\n")
-        header = block_lines[0].strip().lstrip("â€¢-*â—â—¦â€£âƒâ€“â€”").strip()
+        header = block_lines[0].strip().lstrip("•-*●◦‣⁃–—").strip()
         cargo = ""
         empresa = ""
         data_inicio = None
@@ -1045,8 +1045,8 @@ def _parse_experiences(section_text: str) -> list[ExperienciaProfissional]:
             header_no_date = header.replace(date_match.group(0), "").strip()
         pipe_split = header_no_date.split("|", maxsplit=1)
         if len(pipe_split) > 1:
-            cargo = pipe_split[0].strip().lstrip("â€¢-*â—â—¦â€£âƒâ€“â€”").strip()
-            empresa = pipe_split[1].strip().lstrip("â€¢-*â—â—¦â€£âƒâ€“â€”").strip()
+            cargo = pipe_split[0].strip().lstrip("•-*●◦‣⁃–—").strip()
+            empresa = pipe_split[1].strip().lstrip("•-*●◦‣⁃–—").strip()
         else:
             empresa = header_no_date
 
@@ -1063,13 +1063,13 @@ def _parse_experiences(section_text: str) -> list[ExperienciaProfissional]:
                     cargo = (
                         line.replace(sub_date_match.group(0), "")
                         .strip()
-                        .lstrip("â€¢-*â—â—¦â€£âƒâ€“â€”")
+                        .lstrip("•-*●◦‣⁃–—")
                         .strip()
                     )
             elif not cargo:
-                cargo = line.lstrip("â€¢-*â—â—¦â€£âƒâ€“â€”").strip()
+                cargo = line.lstrip("•-*●◦‣⁃–—").strip()
             else:
-                cleaned = line.lstrip("â€¢-*â—â—¦â€£âƒâ€“â€”").strip()
+                cleaned = line.lstrip("•-*●◦‣⁃–—").strip()
                 if cleaned:
                     descricao.append(cleaned)
                     for skill in KNOWN_SKILLS:
@@ -1100,13 +1100,13 @@ def _parse_education(section_text: str) -> list[Formacao]:
         if not block:
             continue
         block_lines = block.split("\n")
-        curso_line = block_lines[0].strip().lstrip("â€¢-*â—â—¦â€£âƒâ€“â€”").strip()
+        curso_line = block_lines[0].strip().lstrip("•-*●◦‣⁃–—").strip()
         instituicao = ""
         data_conclusao = None
         nivel = None
 
         nivel_match = re.search(
-            r"\((Tecn[Ã³o]logo|Bacharelado|Licenciatura|MBA|Mestrado|Doutorado|P[Ã³o]s[-\s]gradua[cÃ§][Ã£a]o|Especializa[cÃ§][Ã£a]o|Curso\s+T[eÃ©]cnico|Aperfei[Ã§c]oamento)\)",
+            r"\((Tecn[óo]logo|Bacharelado|Licenciatura|MBA|Mestrado|Doutorado|P[óo]s[-\s]gradua[cç][ãa]o|Especializa[cç][ãa]o|Curso\s+T[eé]cnico|Aperfei[çc]oamento)\)",
             curso_line,
             re.IGNORECASE,
         )
@@ -1116,7 +1116,7 @@ def _parse_education(section_text: str) -> list[Formacao]:
                 curso_line[: nivel_match.start()] + curso_line[nivel_match.end() :]
             ).strip()
         date_match_curso = re.search(
-            r"(?:Conclu[Ã­i]do\s+(?:em\s+)?)?((?:Jan|Fev|Mar|Abr|Mai|Jun|Jul|Ago|Set|Out|Nov|Dez)[a-z]*[./]\s*\d{4}|\d{4})",
+            r"(?:Conclu[íi]do\s+(?:em\s+)?)?((?:Jan|Fev|Mar|Abr|Mai|Jun|Jul|Ago|Set|Out|Nov|Dez)[a-z]*[./]\s*\d{4}|\d{4})",
             curso_line,
             re.IGNORECASE,
         )
@@ -1126,14 +1126,14 @@ def _parse_education(section_text: str) -> list[Formacao]:
                 curso_line[: date_match_curso.start()]
                 + curso_line[date_match_curso.end() :]
             ).strip()
-        curso = curso_line.strip(" -â€“â€”")
+        curso = curso_line.strip(" -–—")
 
         for line in block_lines[1:]:
             line = line.strip()
             if not line:
                 continue
             if not instituicao:
-                instituicao = line.lstrip("â€¢-*â—â—¦â€£âƒâ€“â€”").strip()
+                instituicao = line.lstrip("•-*●◦‣⁃–—").strip()
                 date_match = re.search(r"\d{4}", line)
                 if date_match:
                     data_conclusao = date_match.group(0)
@@ -1188,7 +1188,7 @@ def _parse_certifications(section_text: str) -> list[Certificacao]:
 
     cert_buffer: Optional[dict] = None
     for line in raw_lines:
-        stripped = line.strip().lstrip("â€¢-*â—â—¦â€£âƒâ€“â€”").strip()
+        stripped = line.strip().lstrip("•-*●◦‣⁃–—").strip()
         if not stripped:
             continue
         if not _is_cert_title(stripped) and cert_buffer is not None:
@@ -1202,10 +1202,10 @@ def _parse_certifications(section_text: str) -> list[Certificacao]:
             ano_match = re.search(r"\b(19\d{2}|20\d{2})\b", nome_cert)
             if ano_match and not ano:
                 ano = ano_match.group(0)
-                nome_cert = nome_cert.replace(ano_match.group(0), "").strip(" -â€“â€”")
-            sep_match = re.search(r"[-â€“â€”]\s+", nome_cert)
+                nome_cert = nome_cert.replace(ano_match.group(0), "").strip(" -–—")
+            sep_match = re.search(r"[-–—]\s+", nome_cert)
             if sep_match:
-                partes = re.split(r"\s*[-â€“â€”]\s+", nome_cert, maxsplit=1)
+                partes = re.split(r"\s*[-–—]\s+", nome_cert, maxsplit=1)
                 nome_cert = partes[0].strip()
                 if not instituicao_cert:
                     instituicao_cert = partes[1].strip() if len(partes) > 1 else None
@@ -1214,8 +1214,8 @@ def _parse_certifications(section_text: str) -> list[Certificacao]:
                 if inst.lower() in nome_cert.lower():
                     idx = nome_cert.lower().index(inst.lower())
                     if idx > 0:
-                        instituicao_cert = nome_cert[idx:].strip(" -â€“â€”)")
-                        nome_cert = nome_cert[:idx].strip(" -â€“â€”.,")
+                        instituicao_cert = nome_cert[idx:].strip(" -–—)")
+                        nome_cert = nome_cert[:idx].strip(" -–—.,")
                     else:
                         instituicao_cert = inst
                     break
@@ -1245,14 +1245,14 @@ def _parse_certifications(section_text: str) -> list[Certificacao]:
         ano_match = re.search(r"\b(19\d{2}|20\d{2})\b", nome_cert)
         if ano_match and not ano:
             ano = ano_match.group(0)
-            nome_cert = nome_cert.replace(ano_match.group(0), "").strip(" -â€“â€”")
+            nome_cert = nome_cert.replace(ano_match.group(0), "").strip(" -–—")
         INST_LIST = sorted(CERT_INSTITUTIONS, key=len, reverse=True)
         for inst in INST_LIST:
             if inst.lower() in nome_cert.lower():
                 idx = nome_cert.lower().index(inst.lower())
                 if idx > 0:
-                    instituicao_cert = nome_cert[idx:].strip(" -â€“â€”)")
-                    nome_cert = nome_cert[:idx].strip(" -â€“â€”.,")
+                    instituicao_cert = nome_cert[idx:].strip(" -–—)")
+                    nome_cert = nome_cert[:idx].strip(" -–—.,")
                 else:
                     instituicao_cert = inst
                 break
@@ -1293,7 +1293,7 @@ def _parse_projects(section_text: str) -> list[Projeto]:
     for block_lines in project_blocks:
         if not block_lines:
             continue
-        nome_proj = block_lines[0].strip().lstrip("â€¢-*â—â—¦â€£âƒâ€“â€”").strip()
+        nome_proj = block_lines[0].strip().lstrip("•-*●◦‣⁃–—").strip()
         desc_proj = None
         bullets_proj: list[str] = []
         tec_proj: list[str] = []
@@ -1307,7 +1307,7 @@ def _parse_projects(section_text: str) -> list[Projeto]:
             if url_match:
                 raw = url_match.group(0).rstrip(")")
                 url_proj = raw if raw.startswith("http") else f"https://{raw}"
-            cleaned = line.lstrip("â€¢-*â—â—¦â€£âƒâ€“â€”").strip()
+            cleaned = line.lstrip("•-*●◦‣⁃–—").strip()
             if cleaned:
                 if not desc_proj:
                     desc_proj = cleaned
@@ -1335,17 +1335,17 @@ def _parse_projects(section_text: str) -> list[Projeto]:
 
 
 async def parse_resume(file_path: str) -> CurriculoSchema:
-    # ETAPA 1: ExtraÃ§Ã£o bruta
+    # ETAPA 1: Extração bruta
     raw_text = extract_text(file_path)
     if not raw_text or len(raw_text) < 50:
-        raise ValueError("NÃ£o foi possÃ­vel extrair texto do arquivo.")
+        raise ValueError("Não foi possível extrair texto do arquivo.")
 
-    # ETAPA 2: NormalizaÃ§Ã£o (unicode, whitespace)
+    # ETAPA 2: Normalização (unicode, whitespace)
     normalized_text = raw_text.strip()
     normalized_text = re.sub(r"\r\n", "\n", normalized_text)
     normalized_text = re.sub(r"[ \t]+", " ", normalized_text)
 
-    # ETAPA 3: ClassificaÃ§Ã£o fuzzy dos blocos
+    # ETAPA 3: Classificação fuzzy dos blocos
     raw_blocks = _split_blocks(normalized_text)
     dominant_lang = _detect_dominant_language(raw_blocks)
 
@@ -1354,7 +1354,7 @@ async def parse_resume(file_path: str) -> CurriculoSchema:
         cls = _classify_block(block, dominant_lang)
         classified_blocks.append(cls)
 
-    # ETAPA 3.5: Encontrar posiÃ§Ã£o da primeira seÃ§Ã£o (fim do header)
+    # ETAPA 3.5: Encontrar posição da primeira seção (fim do header)
     first_section_idx = len(normalized_text)
     for block in classified_blocks:
         if (
@@ -1366,7 +1366,7 @@ async def parse_resume(file_path: str) -> CurriculoSchema:
             if 0 < pos < first_section_idx:
                 first_section_idx = pos
 
-    # ETAPA 4: EstruturaÃ§Ã£o
+    # ETAPA 4: Estruturação
     header_data = _extract_header_contextual(raw_text, file_path)
 
     # Agrupar blocos classificados por tipo (pulando blocos do header)
@@ -1437,10 +1437,10 @@ async def parse_resume(file_path: str) -> CurriculoSchema:
     for block_text in blocks_by_type.get("languages", []):
         items = _extract_list(block_text)
         for item in items:
-            idioma_parts = re.split(r"[-â€“â€”:]\s*", item, maxsplit=1)
+            idioma_parts = re.split(r"[-–—:]\s*", item, maxsplit=1)
             idioma_nome = idioma_parts[0].strip()
             nivel = (
-                idioma_parts[1].strip() if len(idioma_parts) > 1 else "NÃ£o informado"
+                idioma_parts[1].strip() if len(idioma_parts) > 1 else "Não informado"
             )
             idiomas.append(Idioma(idioma=idioma_nome, nivel=nivel))
 

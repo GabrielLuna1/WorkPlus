@@ -54,17 +54,17 @@ async def notificar_pipeline(
         "entrevista_rh": "ðŸ“ž",
         "entrevista_tecnica": "ðŸ’»",
         "teste_tecnico": "ðŸ§ª",
-        "contratado": "âœ…",
-        "rejeitado": "âŒ",
+        "contratado": "✅",
+        "rejeitado": "❌",
     }.get(etapa_nova, "ðŸ”„")
 
     nomes = {
         "salva": "Salva",
         "aplicada": "Aplicada",
-        "em_analise": "Em AnÃ¡lise",
+        "em_analise": "Em Análise",
         "entrevista_rh": "Entrevista RH",
-        "entrevista_tecnica": "Entrevista TÃ©cnica",
-        "teste_tecnico": "Teste TÃ©cnico",
+        "entrevista_tecnica": "Entrevista Técnica",
+        "teste_tecnico": "Teste Técnico",
         "contratado": "Contratado",
         "rejeitado": "Rejeitado",
     }
@@ -73,7 +73,7 @@ async def notificar_pipeline(
         f"<b>{emoji} Pipeline Atualizado</b>\n\n"
         f"<b>{titulo}</b>\n"
         f"{'ðŸ¢ ' + empresa if empresa else ''}\n"
-        f"{nomes.get(etapa_antiga, etapa_antiga)} â†’ {nomes.get(etapa_nova, etapa_nova)}"
+        f"{nomes.get(etapa_antiga, etapa_antiga)} → {nomes.get(etapa_nova, etapa_nova)}"
     )
     return await _send_message(chat_id, text)
 
@@ -84,19 +84,19 @@ async def notificar_resumo_diario(
     pipeline: dict[str, int],
     top_vagas: list[dict],
 ) -> bool:
-    text = "<b>ðŸ“Š Resumo DiÃ¡rio â€” WorkPlus</b>\n\n"
+    text = "<b>ðŸ“Š Resumo Diário — WorkPlus</b>\n\n"
     text += f"<b>Novas vagas hoje:</b> {novas_vagas}\n\n"
 
     text += "<b>Pipeline:</b>\n"
     for etapa, nome in [
         ("salva", "ðŸ“Œ Salvas"),
         ("aplicada", "ðŸ“¨ Aplicadas"),
-        ("em_analise", "ðŸ” Em AnÃ¡lise"),
+        ("em_analise", "ðŸ” Em Análise"),
         ("entrevista_rh", "ðŸ“ž Entrevista RH"),
-        ("entrevista_tecnica", "ðŸ’» Entrevista TÃ©cnica"),
+        ("entrevista_tecnica", "ðŸ’» Entrevista Técnica"),
         ("teste_tecnico", "ðŸ§ª Teste"),
-        ("contratado", "âœ… Contratado"),
-        ("rejeitado", "âŒ Rejeitado"),
+        ("contratado", "✅ Contratado"),
+        ("rejeitado", "❌ Rejeitado"),
     ]:
         count = pipeline.get(etapa, 0)
         if count > 0:
@@ -105,6 +105,6 @@ async def notificar_resumo_diario(
     if top_vagas:
         text += "\n<b>ðŸ”¥ Melhores matches:</b>\n"
         for v in top_vagas[:5]:
-            text += f"â€¢ <b>{v.get('titulo', '?')}</b> â€” {v.get('empresa', '?')} (score: {v.get('score', '?')})\n"
+            text += f"• <b>{v.get('titulo', '?')}</b> — {v.get('empresa', '?')} (score: {v.get('score', '?')})\n"
 
     return await _send_message(chat_id, text)

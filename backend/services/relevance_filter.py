@@ -6,8 +6,8 @@ from models.perfil_usuario import PerfilUsuario
 from core.logger import logger
 from services.categoria_service import CategoriaService
 
-# Mesmas listas do scoring_service â€” vagas tech fora do escopo
-# Full Stack cobre front + back, entÃ£o backend Ã© aceito
+# Mesmas listas do scoring_service — vagas tech fora do escopo
+# Full Stack cobre front + back, então backend é aceito
 OUTRAS_TECHS_FORA_ESCOPO = [
     "analista de dados",
     "cientista de dados",
@@ -20,7 +20,7 @@ OUTRAS_TECHS_FORA_ESCOPO = [
     "infraestrutura",
     "cloud engineer",
     "sysadmin",
-    "seguranÃ§a",
+    "segurança",
     "security analyst",
     "pentest",
     "blue team",
@@ -35,7 +35,7 @@ OUTRAS_TECHS_FORA_ESCOPO = [
     "quality assurance",
     "teste",
     "test automation",
-    "suporte tÃ©cnico",
+    "suporte técnico",
     "suporte ti",
     "help desk",
     "analista de suporte",
@@ -53,8 +53,8 @@ OUTRAS_TECHS_FORA_ESCOPO = [
     "cobol",
     "delphi",
     "visual basic",
-    "estÃ¡gio em ti",
-    "estÃ¡gio ti",
+    "estágio em ti",
+    "estágio ti",
 ]
 
 FRONTEND_FULLSTACK_KEYWORDS = [
@@ -156,15 +156,15 @@ class RelevanceFilter:
         protegido = tem_sinal_tech or tem_sinal_va
 
         # CHECK 1: Rejeitar vagas tech fora do foco (backend, mobile, data, etc.)
-        # a menos que o tÃ­tulo tambÃ©m mencione frontend/fullstack
+        # a menos que o título também mencione frontend/fullstack
         for kw in OUTRAS_TECHS_FORA_ESCOPO:
             if kw in titulo_lower:
                 if any(fk in texto for fk in FRONTEND_FULLSTACK_KEYWORDS):
                     return None  # Protegido: menciona frontend/fullstack
                 return f"fora_do_foco:{kw}"
 
-        # CHECK 2: Desativado para evitar falsos negativos em vagas de tÃ­tulo genÃ©rico
-        # (ex: "Desenvolvedor de Sistemas" ou "Software Engineer") que usam React/Node na descriÃ§Ã£o.
+        # CHECK 2: Desativado para evitar falsos negativos em vagas de título genérico
+        # (ex: "Desenvolvedor de Sistemas" ou "Software Engineer") que usam React/Node na descrição.
         # tem_front = any(fk in titulo_lower for fk in FRONTEND_FULLSTACK_KEYWORDS)
         # if not tem_front and not tem_sinal_tech and not tem_sinal_va:
         #     return "sem_sinal_frontend"
@@ -258,7 +258,7 @@ async def limpar_vagas_irrelevantes(db) -> dict:
             if vid in pipeline_vaga_ids:
                 continue
             titulo = doc.get("titulo", "").lower()
-            # ProteÃ§Ã£o: se menciona frontend/fullstack, preserva
+            # Proteção: se menciona frontend/fullstack, preserva
             if any(fk in titulo for fk in FRONTEND_FULLSTACK_KEYWORDS):
                 continue
             ids_remover.add(doc["_id"])

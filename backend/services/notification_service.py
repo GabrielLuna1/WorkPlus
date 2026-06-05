@@ -46,7 +46,7 @@ def _enviar_toast(vaga: dict) -> None:
         toast = Notification(
             app_id="WorkPlus",
             title=f"Match Supremo! Score: {score}",
-            msg=f"{titulo} â€” {empresa}",
+            msg=f"{titulo} — {empresa}",
             icon=None,
             duration="short",
         )
@@ -64,7 +64,7 @@ def _enviar_toast_powershell(titulo: str, empresa: str, score: int) -> None:
     $template = [Windows.UI.Notifications.ToastNotificationManager]::GetTemplateContent([Windows.UI.Notifications.ToastTemplateType]::ToastText02)
     $textNodes = $template.GetElementsByTagName("text")
     $textNodes.Item(0).AppendChild($template.CreateTextNode("Match Supremo! Score: {score}")) > $null
-    $textNodes.Item(1).AppendChild($template.CreateTextNode("{titulo} â€” {empresa}")) > $null
+    $textNodes.Item(1).AppendChild($template.CreateTextNode("{titulo} — {empresa}")) > $null
     $toast = [Windows.UI.Notifications.ToastNotification]::new($template)
     [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier("WorkPlus").Show($toast)
     '''

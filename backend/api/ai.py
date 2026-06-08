@@ -60,6 +60,33 @@ async def set_provider(body: SetProviderBody):
         raise HTTPException(400, str(e))
 
 
+# ─── GPU ─────────────────────────────────────────────────────
+
+
+@router.get("/provider/gpu/status")
+async def gpu_status():
+    try:
+        return await ai_client.gpu_status()
+    except Exception as e:
+        raise HTTPException(502, f"Ollama indisponivel: {e}")
+
+
+@router.post("/provider/gpu/load")
+async def gpu_load():
+    try:
+        return await ai_client.gpu_load()
+    except Exception as e:
+        raise HTTPException(502, f"Erro ao carregar: {e}")
+
+
+@router.post("/provider/gpu/unload")
+async def gpu_unload():
+    try:
+        return await ai_client.gpu_unload()
+    except Exception as e:
+        raise HTTPException(502, f"Erro ao descarregar: {e}")
+
+
 # ─── Sessions ─────────────────────────────────────────────────
 
 

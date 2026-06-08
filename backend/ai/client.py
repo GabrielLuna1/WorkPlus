@@ -99,6 +99,45 @@ _PROVIDER_CONFIGS = {
     },
 }
 
+
+def _ollama_base() -> str:
+    return settings.ollama_url.rstrip("/")
+
+
+async def gpu_load() -> dict:
+    url = f"{_ollama_base()}/api/generate"
+    model = settings.ollama_model
+    payload = {"model": model, "prompt": "", "keep_alive": -1, "stream": False}
+    async with httpx.AsyncClient(timeout=120) as client:
+        resp = await client.post(url, json=payload)
+        resp.raise_for_status()
+        return {"status": "loaded", "model": model}
+
+
+async def gpu_unload() -> dict:
+    url = f"{_ollama_base()}/api/generate"
+    model = settings.ollama_model
+    payload = {"model": model, "prompt": "", "keep_alive": 0, "stream": False}
+    async with httpx.AsyncClient(timeout=30) as client:
+        resp = await client.post(url, json=payload)
+        resp.raise_for_status()
+        return {"status": "unloaded", "model": model}
+
+
+async def gpu_status() -> dict:
+    url = f"{_ollama_base()}/api/ps"
+    model = settings.ollama_model
+    async with httpx.AsyncClient(timeout=10) as client:
+        resp = await client.get(url)
+        resp.raise_for_status()
+        data = resp.json()
+        loaded = [m for m in data.get("models", []) if m.get("name") == model]
+        if loaded:
+            m = loaded[0]
+            return {"loaded": True, "model": model, "vram_bytes": m.get("size_vram", 0)}
+        return {"loaded": False, "model": model, "vram_bytes": 0}
+
+
 _circuit_breaker = CircuitBreaker(
     threshold=settings.ai_circuit_breaker_threshold,
     reset_seconds=settings.ai_circuit_breaker_reset,

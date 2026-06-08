@@ -594,6 +594,27 @@ export async function setProvider(provider: string): Promise<ProviderInfo> {
   return data;
 }
 
+export interface GpuStatus {
+  loaded: boolean;
+  model: string;
+  vram_bytes: number;
+}
+
+export async function getGpuStatus(): Promise<GpuStatus> {
+  const { data } = await api.get<GpuStatus>("/api/v1/ai/provider/gpu/status");
+  return data;
+}
+
+export async function gpuLoad(): Promise<{ status: string; model: string }> {
+  const { data } = await api.post("/api/v1/ai/provider/gpu/load");
+  return data;
+}
+
+export async function gpuUnload(): Promise<{ status: string; model: string }> {
+  const { data } = await api.post("/api/v1/ai/provider/gpu/unload");
+  return data;
+}
+
 /* ══════════════════════════════════════════════════════════════
    CHAT IA
    ══════════════════════════════════════════════════════════════ */

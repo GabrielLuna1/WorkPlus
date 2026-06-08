@@ -1,6 +1,7 @@
 "use client";
 
 import { Sparkles, Target, BarChart3, FileText, BrainCircuit, TrendingUp, Briefcase, Search } from "lucide-react";
+import { ProviderSelector } from "@/components/hub/ProviderSelector";
 
 const QUICK_ACTIONS = [
   { id: "pipeline_status", label: "Status Pipeline", icon: BarChart3, desc: "Resumo completo das candidaturas", color: "from-blue-500/20 to-blue-600/10 border-blue-500/30" },
@@ -16,6 +17,7 @@ export function WelcomeView({ onAction, vagasRecentes, pipelineResumo }: {
 }) {
   return (
     <div className="p-6 space-y-6">
+      <ProviderSelector />
       <div>
         <h2 className="text-lg font-semibold metallic-gradient font-heading mb-1">WorkPlus Copilot</h2>
         <p className="text-[13px] text-ink-subtle">Seu assistente inteligente de carreira. O que vamos fazer hoje?</p>

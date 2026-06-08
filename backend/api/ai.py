@@ -13,6 +13,7 @@ from core.database import database
 from core.logger import logger
 from ai.models import ChatSessionCreate, ChatSendRequest
 from ai import client as ai_client
+from pydantic import BaseModel
 from ai.tools import TOOL_HANDLERS
 
 router = APIRouter()
@@ -36,6 +37,27 @@ def _doc_to_dict(doc: dict) -> dict:
         if k in doc and isinstance(doc[k], datetime):
             doc[k] = doc[k].isoformat()
     return doc
+
+
+# ─── Provider ─────────────────────────────────────────────────
+
+
+class SetProviderBody(BaseModel):
+    provider: str
+
+
+@router.get("/provider")
+async def get_provider():
+    return ai_client.get_provider_info()
+
+
+@router.post("/provider")
+async def set_provider(body: SetProviderBody):
+    try:
+        ai_client.set_provider(body.provider)
+        return ai_client.get_provider_info()
+    except ValueError as e:
+        raise HTTPException(400, str(e))
 
 
 # ─── Sessions ─────────────────────────────────────────────────

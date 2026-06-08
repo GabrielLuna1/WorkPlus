@@ -12,6 +12,34 @@ from jinja2 import Environment, FileSystemLoader, TemplateNotFound
 from core.config import settings
 from core.logger import logger
 
+PROVIDERS = ["ollama", "lm_studio"]
+_provider_override: Optional[str] = None
+
+
+def set_provider(name: str) -> None:
+    global _provider_override
+    if name not in PROVIDERS:
+        raise ValueError(f"Provider invalido. Opcoes: {', '.join(PROVIDERS)}")
+    _provider_override = name
+
+
+def get_active_provider() -> str:
+    return _provider_override or settings.ai_provider_primary
+
+
+def get_provider_info() -> dict:
+    provider = get_active_provider()
+    models = {
+        "ollama": settings.ollama_model,
+        "lm_studio": settings.lm_studio_model,
+    }
+    return {
+        "current": provider,
+        "available": PROVIDERS,
+        "models": models,
+    }
+
+
 PROMPTS_DIR = Path(__file__).parent / "prompts"
 
 _jinja_env = Environment(loader=FileSystemLoader(str(PROMPTS_DIR)))
@@ -124,10 +152,8 @@ async def _call_with_retry(
     max_tokens: int = 2048,
     timeout: int = 120,
 ) -> Optional[str]:
-    providers = [
-        settings.ai_provider_primary,
-        settings.ai_provider_fallback,
-    ]
+    active = get_active_provider()
+    providers = [active]
 
     for attempt in range(settings.ai_retry_max):
         for provider in providers:
@@ -242,10 +268,8 @@ async def chat_stream(
     temperature: float = 0.7,
     max_tokens: int = 2048,
 ) -> AsyncGenerator[str, None]:
-    providers = [
-        settings.ai_provider_primary,
-        settings.ai_provider_fallback,
-    ]
+    active = get_active_provider()
+    providers = [active]
 
     for provider in providers:
         if _circuit_breaker.is_open():

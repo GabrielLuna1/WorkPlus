@@ -575,6 +575,26 @@ export async function syncPipelineEventos(): Promise<EventoCalendario[]> {
 }
 
 /* ══════════════════════════════════════════════════════════════
+   AI PROVIDER
+   ══════════════════════════════════════════════════════════════ */
+
+export interface ProviderInfo {
+  current: string;
+  available: string[];
+  models: Record<string, string>;
+}
+
+export async function getProvider(): Promise<ProviderInfo> {
+  const { data } = await api.get<ProviderInfo>("/api/v1/ai/provider");
+  return data;
+}
+
+export async function setProvider(provider: string): Promise<ProviderInfo> {
+  const { data } = await api.post<ProviderInfo>("/api/v1/ai/provider", { provider });
+  return data;
+}
+
+/* ══════════════════════════════════════════════════════════════
    CHAT IA
    ══════════════════════════════════════════════════════════════ */
 

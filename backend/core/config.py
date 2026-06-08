@@ -16,8 +16,8 @@ class Settings(BaseSettings):
     ollama_url: str = "http://127.0.0.1:11434"
     ollama_model: str = "llama3.2"
 
-    ai_provider_primary: str = "lm_studio"
-    ai_provider_fallback: str = "lm_studio"
+    ai_provider_primary: str = "ollama"
+    ai_provider_fallback: str = "ollama"
     ai_retry_max: int = 3
     ai_retry_base_delay: float = 2.0
     ai_circuit_breaker_threshold: int = 5

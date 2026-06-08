@@ -23,10 +23,14 @@ class DedupService:
             h = calcular_hash(v)
             hash_map[h] = v
 
-        existentes = await self.db["vagas"].find(
-            {"hash": {"$in": list(hash_map.keys())}},
-            {"hash": 1},
-        ).to_list(length=len(hash_map))
+        existentes = (
+            await self.db["vagas"]
+            .find(
+                {"hash": {"$in": list(hash_map.keys())}},
+                {"hash": 1},
+            )
+            .to_list(length=len(hash_map))
+        )
         existentes_set: Set[str] = {d["hash"] for d in existentes}
 
         novas: List[VagaDB] = []
@@ -43,4 +47,4 @@ class DedupService:
             result = await self.db["vagas"].insert_many(dicts, ordered=False)
             return len(result.inserted_ids)
         except BulkWriteError as e:
-            return len(e.details.get("insertedIds", []))
+            return e.details.get("nInserted", 0)

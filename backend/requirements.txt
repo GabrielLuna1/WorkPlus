@@ -14,3 +14,8 @@ python-docx==1.1.2
 pdfplumber>=0.11.4
 docx2txt>=0.8
 apscheduler>=3.10.4
+beautifulsoup4==4.15.0
+jinja2==3.1.6
+pymongo==4.9.2
+sse-starlette==2.4.1
+python-multipart==0.0.32

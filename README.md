@@ -7,7 +7,7 @@
 
 <div align="center">
 
-# WorkPlus
+# WorkHunter
 
 ### *Sua plataforma inteligente de busca e gestão de vagas tech*
 
@@ -24,11 +24,11 @@
 [![Status: Active](https://img.shields.io/badge/Status-Active-2ea44f?style=flat-square)]()
 [![AI: Local](https://img.shields.io/badge/AI-Local_LLM-8B5CF6?style=flat-square)]()
 
-> WorkPlus centraliza vagas de tecnologia de 12 fontes, aplica match score por IA local e organiza tudo em um pipeline kanban — coleta, analisa e acompanha oportunidades sem você precisar visitar dezenas de sites manualmente.
+> WorkHunter centraliza vagas de tecnologia de 12 fontes, aplica match score por IA local e organiza tudo em um pipeline kanban — coleta, analisa e acompanha oportunidades sem você precisar visitar dezenas de sites manualmente.
 >
-> ⚠️ O WorkPlus **não envia currículos, não preenche formulários e não se candidata automaticamente**. Todo o processo de aplicação é manual e intencional, feito diretamente no site de cada empresa. O sistema cuida da etapa anterior: a inteligência de mercado, a triagem e a organização — para que você chegue ao momento de aplicar já com informação suficiente para decidir se aquela vaga vale seu tempo.
+> ⚠️ O WorkHunter **não envia currículos, não preenche formulários e não se candidata automaticamente**. Todo o processo de aplicação é manual e intencional, feito diretamente no site de cada empresa. O sistema cuida da etapa anterior: a inteligência de mercado, a triagem e a organização — para que você chegue ao momento de aplicar já com informação suficiente para decidir se aquela vaga vale seu tempo.
 >
-> 📌 **Aviso Legal:** WorkPlus é um projeto **open source educacional**, não afiliado a nenhuma das plataformas ou portais listados. O sistema opera com limites responsáveis de requisições e respeito a `robots.txt`. Cada usuário é responsável por verificar os Termos de Serviço das fontes que utiliza. Nenhum dado pessoal é enviado a servidores externos — toda a IA roda localmente via LM Studio.
+> 📌 **Aviso Legal:** WorkHunter é um projeto **open source educacional**, não afiliado a nenhuma das plataformas ou portais listados. O sistema opera com limites responsáveis de requisições e respeito a `robots.txt`. Cada usuário é responsável por verificar os Termos de Serviço das fontes que utiliza. Nenhum dado pessoal é enviado a servidores externos — toda a IA roda localmente via LM Studio.
 
 [⚡ Quick Start](#-quick-start) •
 [🧠 Features](#-features) •
@@ -43,7 +43,7 @@
 
 ## 📋 Sobre o Projeto
 
-O WorkPlus é uma plataforma pessoal de busca e gestão de vagas de tecnologia, construída para automatizar todo o processo de encontrar, avaliar e acompanhar oportunidades de emprego. Em vez de visitar dezenas de sites manualmente, o sistema faz isso de forma contínua em segundo plano e entrega apenas as vagas mais relevantes, já analisadas e pontuadas.
+O WorkHunter é uma plataforma pessoal de busca e gestão de vagas de tecnologia, construída para automatizar todo o processo de encontrar, avaliar e acompanhar oportunidades de emprego. Em vez de visitar dezenas de sites manualmente, o sistema faz isso de forma contínua em segundo plano e entrega apenas as vagas mais relevantes, já analisadas e pontuadas.
 
 ### Coleta de Vagas
 
@@ -94,7 +94,7 @@ Para vagas de interesse, uma análise mais profunda pode ser solicitada via IA, 
 
 ## 📡 Fontes
 
-O WorkPlus consulta vagas de tecnologia através de plataformas abertas e portais de emprego:
+O WorkHunter consulta vagas de tecnologia através de plataformas abertas e portais de emprego:
 
 | | Fonte | Tipo |
 |:-:|-------|------|
@@ -800,7 +800,7 @@ LOG_LEVEL=INFO
 
 ## ⚖️ Aviso Legal
 
-WorkPlus é um projeto **open source educacional**, criado como portfólio e ferramenta de uso pessoal.
+WorkHunter é um projeto **open source educacional**, criado como portfólio e ferramenta de uso pessoal.
 
 - **Não afiliado** a nenhuma das plataformas, portais ou empresas listadas
 - **Não automatiza candidaturas** — todo processo de aplicação é manual

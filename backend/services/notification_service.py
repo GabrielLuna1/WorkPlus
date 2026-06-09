@@ -44,7 +44,7 @@ def _enviar_toast(vaga: dict) -> None:
         from winotify import Notification, audio
 
         toast = Notification(
-            app_id="WorkPlus",
+            app_id="WorkHunter",
             title=f"Match Supremo! Score: {score}",
             msg=f"{titulo} — {empresa}",
             icon=None,
@@ -66,7 +66,7 @@ def _enviar_toast_powershell(titulo: str, empresa: str, score: int) -> None:
     $textNodes.Item(0).AppendChild($template.CreateTextNode("Match Supremo! Score: {score}")) > $null
     $textNodes.Item(1).AppendChild($template.CreateTextNode("{titulo} — {empresa}")) > $null
     $toast = [Windows.UI.Notifications.ToastNotification]::new($template)
-    [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier("WorkPlus").Show($toast)
+    [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier("WorkHunter").Show($toast)
     '''
 
     subprocess.run(

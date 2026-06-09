@@ -159,7 +159,7 @@ class EmailManager:
 
     def _extrair_vaga_id(self, assunto: str, corpo: str) -> Optional[str]:
         text = f"{assunto} {corpo}"
-        match = re.search(r"(?:WorkPlus|job|vaga)[:\-\s]*([a-fA-F0-9]{24})", text)
+        match = re.search(r"(?:WorkHunter|job|vaga)[:\-\s]*([a-fA-F0-9]{24})", text)
         return match.group(1) if match else None
 
     def _detectar_tipo(self, assunto: str, de_email: str, corpo: str) -> str:

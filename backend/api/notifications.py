@@ -72,7 +72,7 @@ async def testar_telegram(
         raise HTTPException(400, "Nenhum chat_id configurado")
 
     ok = await _send_message(
-        chat_id, "<b>âœ… Teste</b>\n\nNotificaÃ§Ãµes do WorkPlus funcionando!"
+        chat_id, "<b>âœ… Teste</b>\n\nNotificaÃ§Ãµes do WorkHunter funcionando!"
     )
     if not ok:
         raise HTTPException(

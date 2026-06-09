@@ -28,7 +28,7 @@ export default function Sidebar() {
           <Hexagon className="w-6 h-6 text-[#FFF6D3] fill-black/20" />
         </div>
         <h1 className="font-heading font-semibold text-xl metallic-gradient">
-          WorkPlus
+          WorkHunter
         </h1>
       </div>
       

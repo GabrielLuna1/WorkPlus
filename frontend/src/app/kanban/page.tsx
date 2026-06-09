@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import KanbanBoard from "@/components/kanban/KanbanBoard";
 
 export const metadata: Metadata = {
-  title: "Kanban | WorkPlus",
+  title: "Kanban | WorkHunter",
   description: "Gerencie suas candidaturas em um Pipeline visual",
 };
 

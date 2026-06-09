@@ -84,7 +84,7 @@ async def notificar_resumo_diario(
     pipeline: dict[str, int],
     top_vagas: list[dict],
 ) -> bool:
-    text = "<b>ðŸ“Š Resumo Diário — WorkPlus</b>\n\n"
+    text = "<b>📊 Resumo Diário — WorkHunter</b>\n\n"
     text += f"<b>Novas vagas hoje:</b> {novas_vagas}\n\n"
 
     text += "<b>Pipeline:</b>\n"

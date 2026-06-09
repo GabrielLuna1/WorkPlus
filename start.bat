@@ -1,8 +1,8 @@
 @echo off
-title WorkPlus
+title WorkHunter
 
 echo ========================================
-echo  WorkPlus - Iniciando servicos
+echo  WorkHunter - Iniciando servicos
 echo ========================================
 echo.
 
@@ -27,7 +27,7 @@ echo [Backend] Instalando Playwright browsers...
 
 :: Iniciar Backend (com terminal visivel + log)
 echo [Backend] Iniciando FastAPI na porta 8070...
-start "WorkPlus-Backend" cmd /c "cd /d D:\Work\backend && %PYTHON% -m uvicorn main:app --reload --port 8070 --log-level debug"
+start "WorkHunter-Backend" cmd /c "cd /d D:\Work\backend && %PYTHON% -m uvicorn main:app --reload --port 8070 --log-level debug"
 
 :: Esperar 3s e verificar se backend subiu
 timeout /t 3 /nobreak >nul
@@ -48,7 +48,7 @@ if not exist "D:\Work\frontend\node_modules" (
 
 :: Iniciar Frontend
 echo [Frontend] Iniciando Next.js na porta 3000...
-start "WorkPlus-Frontend" cmd /c "cd /d D:\Work\frontend && npm run dev"
+start "WorkHunter-Frontend" cmd /c "cd /d D:\Work\frontend && npm run dev"
 
 echo.
 echo ========================================
@@ -63,6 +63,6 @@ pause >nul
 
 echo.
 echo Parando servicos...
-taskkill /f /fi "WindowTitle eq WorkPlus-Backend" >nul 2>&1
-taskkill /f /fi "WindowTitle eq WorkPlus-Frontend" >nul 2>&1
+taskkill /f /fi "WindowTitle eq WorkHunter-Backend" >nul 2>&1
+taskkill /f /fi "WindowTitle eq WorkHunter-Frontend" >nul 2>&1
 echo Servicos parados.

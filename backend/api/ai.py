@@ -510,7 +510,7 @@ def _build_system_prompt(user_id: str, context: dict) -> str:
 
     context_str = "\n".join(ctx_lines)
 
-    return f"""Você é o WorkPlus Copilot, assistente inteligente de carreira.
+    return f"""Você é o WorkHunter Copilot, assistente inteligente de carreira.
 
 Você ajuda o usuário a otimizar candidaturas, analisar vagas, melhorar currículos e gerenciar o pipeline de forma estratégica.
 

@@ -339,7 +339,7 @@ export function ChatPanel() {
               className="flex items-center gap-1 hover:text-accent transition-colors"
             >
               <span className="text-sm font-medium text-ink truncate">
-                {sessaoAtiva?.titulo || "WorkPlus Copilot"}
+                {sessaoAtiva?.titulo || "WorkHunter Copilot"}
               </span>
               <ChevronDown
                 className={`w-3.5 h-3.5 text-ink-subtle transition-transform ${showSessoes ? "rotate-180" : ""}`}

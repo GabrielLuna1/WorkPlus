@@ -1,4 +1,4 @@
-# 🔍 Análise Completa — WorkPlus
+# 🔍 Análise Completa — WorkHunter
 
 > Análise técnica profunda de toda a plataforma, cobrindo arquitetura, funcionalidades, fluxo de dados, IA, anti-detecção, bugs conhecidos e roadmap sugerido.
 

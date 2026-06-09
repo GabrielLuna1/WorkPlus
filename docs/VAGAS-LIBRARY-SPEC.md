@@ -1,4 +1,4 @@
-# WorkPlus — Especificação: Biblioteca de Vagas (v1.2.0)
+# WorkHunter — Especificação: Biblioteca de Vagas (v1.2.0)
 
 ## 1. Problema
 

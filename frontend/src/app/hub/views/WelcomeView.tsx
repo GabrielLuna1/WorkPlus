@@ -19,7 +19,7 @@ export function WelcomeView({ onAction, vagasRecentes, pipelineResumo }: {
     <div className="p-6 space-y-6">
       <ProviderSelector />
       <div>
-        <h2 className="text-lg font-semibold metallic-gradient font-heading mb-1">WorkPlus Copilot</h2>
+        <h2 className="text-lg font-semibold metallic-gradient font-heading mb-1">WorkHunter Copilot</h2>
         <p className="text-[13px] text-ink-subtle">Seu assistente inteligente de carreira. O que vamos fazer hoje?</p>
       </div>
 

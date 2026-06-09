@@ -46,7 +46,7 @@ async def lifespan(app: FastAPI):
     await database.close()
 
 
-app = FastAPI(title="WorkPlus API", version="1.0.0", lifespan=lifespan)
+app = FastAPI(title="WorkHunter API", version="1.0.0", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,

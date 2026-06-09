@@ -1,4 +1,4 @@
-# WorkPlus — Contexto para Agentes
+# WorkHunter — Contexto para Agentes
 
 ## Stack
 - **Backend**: FastAPI + MongoDB 7 + Python 3.11 (porta 8070)

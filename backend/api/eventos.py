@@ -1,5 +1,5 @@
 ﻿from typing import Optional, List
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from fastapi import APIRouter, Depends, HTTPException, Query
 from motor.motor_asyncio import AsyncIOMotorDatabase
 from bson.objectid import ObjectId
@@ -19,6 +19,14 @@ async def get_db() -> AsyncIOMotorDatabase:
     return database.get_db()
 
 
+def _utc(dt) -> Optional[datetime]:
+    if dt is None or isinstance(dt, str):
+        return dt
+    if isinstance(dt, datetime) and dt.tzinfo is None:
+        return dt.replace(tzinfo=timezone.utc)
+    return dt
+
+
 def _format(doc: dict) -> EventoResponse:
     return EventoResponse(
         id=str(doc["_id"]),
@@ -27,14 +35,14 @@ def _format(doc: dict) -> EventoResponse:
         empresa=doc.get("empresa", ""),
         titulo=doc.get("titulo", ""),
         tipo=doc.get("tipo", ""),
-        data_inicio=doc.get("data_inicio", datetime.utcnow()),
-        data_fim=doc.get("data_fim"),
+        data_inicio=_utc(doc.get("data_inicio", datetime.utcnow())),
+        data_fim=_utc(doc.get("data_fim")),
         descricao=doc.get("descricao", ""),
         local=doc.get("local", ""),
         url=doc.get("url", ""),
         status=doc.get("status", "pendente"),
-        created_at=doc["created_at"],
-        updated_at=doc["updated_at"],
+        created_at=_utc(doc["created_at"]),
+        updated_at=_utc(doc["updated_at"]),
     )
 
 
@@ -184,11 +192,16 @@ async def sincronizar_pipeline(
         )
 
         if existing:
+            data_inicio = (
+                EventoCreate(data_inicio=item["proxima_data"]).data_inicio
+                if item.get("proxima_data")
+                else None
+            )
             await db["eventos"].update_one(
                 {"_id": existing["_id"]},
                 {
                     "$set": {
-                        "data_inicio": item["proxima_data"],
+                        "data_inicio": data_inicio,
                         "titulo": item.get("vaga_titulo", ""),
                         "empresa": item.get("empresa", ""),
                         "descricao": item.get("proxima_acao", ""),

@@ -397,7 +397,12 @@ async def _chat_stream_ollama(
                 except json.JSONDecodeError:
                     continue
 
+                thinking = data.get("message", {}).get("thinking", "")
                 content = data.get("message", {}).get("content", "")
+
+                if thinking:
+                    yield {"type": "reasoning", "token": thinking}
+
                 if not content:
                     if data.get("done"):
                         break
@@ -409,7 +414,7 @@ async def _chat_stream_ollama(
                 # Track think tags in streaming content
                 while content:
                     if not in_thinking:
-                        idx = content.find("")
+                        idx = content.find("<think>")
                         if idx == -1:
                             yield {"type": "content", "token": content}
                             break
@@ -420,7 +425,7 @@ async def _chat_stream_ollama(
                             in_thinking = True
                             content = content[idx + 7 :]
                     else:
-                        idx = content.find("")
+                        idx = content.find("</think>")
                         if idx == -1:
                             thinking_buffer += content
                             yield {"type": "reasoning", "token": content}
